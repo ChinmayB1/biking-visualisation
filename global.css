@@ -1,0 +1,71 @@
+body {
+  font: 100%/1.5 system-ui, sans-serif;
+  display: flex;
+  flex-flow: column;
+  max-width: 90em;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  margin-bottom: 1em;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#time-filter {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+}
+
+#time-slider {
+  width: 200px;
+  margin: 0 0.5em;
+}
+
+#time-filter time, 
+#time-filter em {
+  display: inline-block;
+  min-width: 75px;
+  text-align: right;
+}
+
+#selected-time:empty + #any-time {
+  margin-left: -75px; /* Pull the any-time text back when selected-time is empty */
+}
+
+#any-time {
+  color: #777;
+  font-style: italic;
+}
+
+.legend {
+  display: flex;
+  gap: 10px;
+  margin-block: 1em;
+  justify-content: center;
+}
+
+.legend > div {
+  flex: 1;
+  max-width: 150px;
+  padding: 5px 15px;
+  text-align: center;
+  color: white;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+  background-color: var(--color);
+  border-radius: 4px;
+} 

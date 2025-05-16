@@ -1,0 +1,104 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#map {
+  width: 90%;
+  height: 75vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#map svg {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+circle {
+  pointer-events: auto;
+  fill: var(--color);
+  fill-opacity: 0.6;
+  stroke: white;
+  stroke-width: 1;
+
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+  flex-wrap: wrap;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5em;
+}
+
+.legend > span {
+  font-weight: bold;
+  color: black;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 1em;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  min-width: 130px;
+}
+
+/* Add styling for the text inside legend items */
+.legend-item span:not(.swatch) {
+  color: #333;
+  font-size: 0.9em;
+}
+
+.swatch {
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Define explicit colors for each departure ratio */
+.swatch[style="--departure-ratio: 1"] {
+  background-color: steelblue;
+}
+
+.swatch[style="--departure-ratio: 0.5"] {
+  background-color: #9370DB; /* Medium purple */
+}
+
+.swatch[style="--departure-ratio: 0"] {
+  background-color: darkorange;
+}
